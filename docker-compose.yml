@@ -140,12 +140,12 @@ services:
     environment:
       NODE_ENV: ${NODE_ENV:-production}
       AUTH_SERVICE_PORT: ${AUTH_SERVICE_PORT:-4003}
-      AUTH_DB_URL: mysql://${AUTH_DB_USER:-chatapp_auth_user}:${AUTH_DB_PASSWORD:-chatapp_auth_password}@auth-db:3306/${AUTH_DB_NAME:-chatapp_auth_service}
+      AUTH_DB_URL: mysql://${AUTH_DB_USER}:${AUTH_DB_PASSWORD}@auth-db:3306/${AUTH_DB_NAME}
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-1d}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
       JWT_REFRESH_EXPIRES_IN: ${JWT_REFRESH_EXPIRES_IN:-30d}
-      RABBITMQ_URL: amqp://${RABBITMQ_USER:-guest}:${RABBITMQ_PASSWORD:-guest}@rabbitmq:5672
+      RABBITMQ_URL: amqp://${RABBITMQ_USER}:${RABBITMQ_PASSWORD}@rabbitmq:5672
       INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN}
     depends_on:
       auth-db:
