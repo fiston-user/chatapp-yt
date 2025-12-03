@@ -140,12 +140,12 @@ services:
     environment:
       NODE_ENV: ${NODE_ENV:-production}
       AUTH_SERVICE_PORT: ${AUTH_SERVICE_PORT:-4003}
-      AUTH_DB_URL: mysql://${AUTH_DB_USER}:${AUTH_DB_PASSWORD}@auth-db:3306/${AUTH_DB_NAME}
+      AUTH_DB_URL: ${AUTH_DB_URL}
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-1d}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
       JWT_REFRESH_EXPIRES_IN: ${JWT_REFRESH_EXPIRES_IN:-30d}
-      RABBITMQ_URL: amqp://${RABBITMQ_USER}:${RABBITMQ_PASSWORD}@rabbitmq:5672
+      RABBITMQ_URL: ${RABBITMQ_URL}
       INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN}
     depends_on:
       auth-db:
@@ -172,8 +172,8 @@ services:
     environment:
       NODE_ENV: ${NODE_ENV:-production}
       USER_SERVICE_PORT: ${USER_SERVICE_PORT:-4001}
-      USER_DB_URL: postgres://${USER_DB_USER:-chatapp_user}:${USER_DB_PASSWORD:-chatapp_password}@user-db:5432/${USER_DB_NAME:-chatapp_user_service}
-      RABBITMQ_URL: amqp://${RABBITMQ_USER:-guest}:${RABBITMQ_PASSWORD:-guest}@rabbitmq:5672
+      USER_DB_URL: ${USER_DB_URL}
+      RABBITMQ_URL: ${RABBITMQ_URL}
       INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN}
     depends_on:
       user-db:
@@ -200,9 +200,9 @@ services:
     environment:
       NODE_ENV: ${NODE_ENV:-production}
       CHAT_SERVICE_PORT: ${CHAT_SERVICE_PORT:-4002}
-      MONGO_URL: mongodb://${MONGO_INITDB_ROOT_USERNAME:-root}:${MONGO_INITDB_ROOT_PASSWORD:-password}@mongo:27017/chatapp?authSource=admin
-      REDIS_URL: redis://redis:6379
-      RABBITMQ_URL: amqp://${RABBITMQ_USER:-guest}:${RABBITMQ_PASSWORD:-guest}@rabbitmq:5672
+      MONGO_URL: ${MONGO_URL}
+      REDIS_URL: ${REDIS_URL}
+      RABBITMQ_URL: ${RABBITMQ_URL}
       INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN}
       JWT_SECRET: ${JWT_SECRET}
     depends_on:
